@@ -4,6 +4,7 @@
     let x = 1;
     let winner = []
     let animationStep = "slide-top-end";
+    let startButtonAvaiable = false;
     let options = [
         {id: "01", data: "🐶"},
         {id: "01", data: "🐸"},
@@ -27,6 +28,7 @@
     }
 
     function startGame() {
+        startButtonAvaiable = true;
         const start = setInterval(()=>{
             x++
 
@@ -45,6 +47,7 @@
                     addWinner(`${options[caroussel01].data} - ${options[caroussel02].data} - ${options[caroussel03].data}`)
                     window.alert("Winner!")
                 }, 500)
+                startButtonAvaiable=false;
                 clearInterval(start)
             }
         }, 500)
@@ -118,6 +121,10 @@
         display: none;
     }
 
+    .start-btn:disabled {
+        background: #b96565;
+    }
+
 </style>
 <section class="gacha-game">
     <div class="machine">
@@ -133,7 +140,7 @@
             </div>
         </div>
         <div class="machine-lever">
-            <button on:click={startGame}>PLAY</button>
+            <button class="start-btn" disabled={startButtonAvaiable} on:click={startGame}>PLAY</button>
         </div>
     </div>
     <div class="rank">
