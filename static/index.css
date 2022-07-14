@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Calibri, fangsong;
+}
+
+
+
+nav {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: #94f8ff;
+  justify-content: flex-end;
+  padding: 0 15px;
+}
+
+.text-decorated {
+  padding: 5px 10px;
+  background-color: rgba(94, 167, 223, 0.68);
+  color: white;
+  border-radius: 10px
+}
