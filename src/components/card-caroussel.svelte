@@ -65,5 +65,5 @@
 </style>
 
 <section class="caroussel">
-        <div class={`caroussel-item ${animationStep}`}>{options[optionState]?.data}</div>
+        <div class={`caroussel-item ${animationStep}`}>{`${typeof options[optionState]?.data == 'undefined' ? '👽' : options[optionState].data}`}</div>
 </section>
