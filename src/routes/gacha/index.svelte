@@ -1,6 +1,9 @@
 <script>
     import CardCaroussel from "../../components/card-caroussel.svelte"
+    import DificultSelect from "../../components/dificult-select.svelte"
 
+    let option = 'easy';
+    let options = [];
     let audio;
     let x = 1;
     let rankDisplay, playersDisplay = 'none';
@@ -9,14 +12,8 @@
     let players = [];
     let animationStep = "slide-top-end";
     let startButtonAvaiable = false;
-    let options = [
-        {id: "01", data: "🐶"},
-        {id: "01", data: "🐸"},
-        {id: "01", data: "🦝"},
-        {id: "01", data: "🐰"},
-        {id: "01", data: "🐭"},
-        {id: "01", data: "🐱"},
-    ]
+
+    loadOptions();
 
     let caroussel01 = random(0, options.length);
     let caroussel02 = random(0, options.length);
@@ -27,6 +24,46 @@
         rankDisplay = rankDisplay === 'flex' ? 'none' : 'flex';
         playersDisplay = 'none';
         btnClickSound();
+    }
+
+    function loadOptions() {
+        console.log("Option", option)
+        switch (option) {
+            case "easy":
+                options =  [
+                    {id: "01", data: "🐶"},
+                    {id: "02", data: "🐸"},
+                    {id: "03", data: "🦝"},
+                ];
+                break;
+            case "medium":
+                options = [
+                    {id: "01", data: "🐶"},
+                    {id: "02", data: "🐸"},
+                    {id: "03", data: "🦝"},
+                    {id: "04", data: "🐰"},
+                ];
+                break;
+            case "hard":
+                options = [
+                    {id: "01", data: "🐶"},
+                    {id: "02", data: "🐸"},
+                    {id: "03", data: "🦝"},
+                    {id: "04", data: "🐰"},
+                    {id: "05", data: "🐯"},
+                    {id: "06", data: "🐻"},
+                ];
+                break;
+            default:
+                options = [
+                    {id: "01", data: "🐶"},
+                    {id: "02", data: "🐸"},
+                ];
+                break;
+
+        }
+
+        console.log('Loaded Options ',options)
     }
 
     function playSound() {
@@ -65,6 +102,7 @@
 
     function startGame() {
         startButtonAvaiable = true;
+        loadOptions();
         btnClickSound();
         const start = setInterval(()=>{
             x++
@@ -228,6 +266,7 @@
             </div>
         </div>
         <div class="menu">
+            <DificultSelect bind:option={option}/>
             <button class="music-btn" on:click={playSound}>Music 🔊</button>
             <button class="players-btn" on:click={showPlayers}>Players</button>
             <button class="winners-btn" on:click={showWinners}>winners</button>

@@ -5,13 +5,15 @@
   font-family: Calibri, fangsong;
 }
 
-
+body {
+  background: url("/background.png");
+}
 
 nav {
   display: flex;
   align-items: center;
   height: 70px;
-  background: #94f8ff;
+  background: #d9fba8;
   justify-content: flex-end;
   padding: 0 15px;
 }
