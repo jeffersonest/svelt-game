@@ -70,7 +70,7 @@
 
 <div class="select">
     <select on:change={selectOption} >
-        <option value="easy">Easy</option>
+        <option selected value="easy">Easy</option>
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
     </select>
